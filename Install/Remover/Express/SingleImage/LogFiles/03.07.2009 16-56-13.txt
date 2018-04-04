@@ -1,0 +1,79 @@
+=================Logging started at 03.07.2009 16:56:13 ==================
+Binary table successfully built
+CustomAction table successfully built
+Property table successfully built
+Feature table successfully built
+FeatureComponents table successfully built
+IniFile table successfully built
+Building Directory table
+Directory table successfully built
+Registry table successfully built
+Building Feature table
+Component table successfully built
+Directory table successfully built
+AdminExecuteSequence table successfully built
+AdminUISequence table successfully built
+AdvtExecuteSequence table successfully built
+InstallExecuteSequence table successfully built
+InstallUISequence table successfully built
+Shortcut table successfully built
+Class table successfully built
+AppId table successfully built
+ProgId table successfully built
+TypeLib table successfully built
+Extension table successfully built
+Verb table successfully built
+MIME table successfully built
+PublishComponent table successfully built
+Directory table successfully built
+LaunchCondition table successfully built
+ServiceInstall table successfully built
+ServiceControl table successfully built
+ODBCDriver table successfully built
+ODBCAttribute table successfully built
+ODBCDataSource table successfully built
+ODBCSourceAttribute table successfully built
+ODBCTranslator table successfully built
+TextStyle table successfully built
+ActionText table successfully built
+Error table successfully built
+UIText table successfully built
+Icon table successfully built
+InstallShield table successfully built
+Dialog AdminChangeFolder for language Английский (США) built
+Dialog AdminNetworkLocation for language Английский (США) built
+Dialog AdminWelcome for language Английский (США) built
+Dialog SplashBitmap for language Английский (США) built
+Dialog InstallChangeFolder for language Английский (США) built
+Dialog CancelSetup for language Английский (США) built
+Dialog CustomSetup for language Английский (США) built
+Dialog OutOfSpace for language Английский (США) built
+Dialog SetupError for language Английский (США) built
+Dialog SetupCompleteSuccess for language Английский (США) built
+Dialog SetupCompleteError for language Английский (США) built
+Dialog DiskSpaceRequirements for language Английский (США) built
+Dialog FilesInUse for language Английский (США) built
+Dialog SetupInitialization for language Английский (США) built
+Dialog LicenseAgreement for language Английский (США) built
+Dialog MaintenanceType for language Английский (США) built
+Dialog MaintenanceWelcome for language Английский (США) built
+Dialog SetupProgress for language Английский (США) built
+Dialog CustomerInformation for language Английский (США) built
+Dialog SetupResume for language Английский (США) built
+Dialog SetupInterrupted for language Английский (США) built
+Dialog ReadyToInstall for language Английский (США) built
+Dialog ReadyToRemove for language Английский (США) built
+Dialog InstallWelcome for language Английский (США) built
+Dialog DestinationFolder for language Английский (США) built
+Dialog CustomSetupTips for language Английский (США) built
+Dialog ReadmeInformation for language Английский (США) built
+Dialog SetupType for language Английский (США) built
+Dialog DatabaseFolder for language Английский (США) built
+Language Английский (США) built
+Files processed
+Cabs
+Media
+SummaryStream table successfully built
+Setup.exe created
+Express\SingleImage build completed with 0 errors, 0 warnings
+=================Logging Stopped at 03.07.2009 16:56:17 ==================

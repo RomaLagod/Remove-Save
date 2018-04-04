@@ -1,0 +1,191 @@
+procedure TFather.sbOpenClick(Sender: TObject);
+begin
+   if OpenDialog1.Execute then //anee oaee aua?ai, oi auiieiyou neaao?uaa
+    begin
+      creator('  '); //nicaaou ai?a?iaa ieii
+      if not (ActiveMDIChild = Nil) then
+      if ActiveMDIChild is TChildForm then   begin
+       TChildForm(ActiveMDIChild).reField.Lines.LoadFromFile(OpenDialog1.FileName); //caa?oceou a reField aua?aiiue oaee
+       TChildForm(ActiveMDIChild).Caption:= Format('%s - %s', [ExtractFileName(OpenDialog1.FileName), Application.Title]); //onoaiiaeou caaieiaie ai?a?iaai ieia a iacaaiea oaeea
+       SystemButtonOpen;
+       HighLight;
+       AddFileNameToList(OpenDialog1.FileName);
+    end;
+   end; 
+end;
+
+procedure TFather.SaveExecute(Sender: TObject);
+var
+   SaveFil:string;
+Label en3,verx;
+begin
+verx:if not (ActiveMDIChild = Nil) then
+     if ActiveMDIChild is TChildform then   begin
+ If SaveDialog1.Execute then
+   Begin
+    SaveFil:=SaveDialog1.FileName;
+    if FileExists(SaveFil) then
+     Begin
+      case MessageDlg('Oaee  '+ExtractFileName(SaveFil)+'  a?a ?nio?. '+#13+' Cai?ieoe eiai?',mtWarning,[mbYes,mbNo,mbCancel],0) of
+     idYes:   Begin
+                TChildForm(ActiveMDIChild).reField.Lines.SaveToFile(SaveDialog1.FileName);
+                TChildForm(ActiveMDIChild).reField.modified:=false;
+                Father.StatusBar1.Panels[1].Text:='';
+                TChildForm(ActiveMDIChild).Caption:= Format('%s - %s', [ExtractFileName(SaveDialog1.FileName), Application.Title]);//onoaiiaeou caaieiaie ai?a?iaai ieia a iacaaiea oaeea
+                AddFileNameToList(SaveDialog1.FileName);
+              end;
+     idNo:     goto verx;
+     idCancel: goto en3;
+   end;
+   end
+   else
+         Begin
+           TChildForm(ActiveMDIChild).reField.Lines.SaveToFile(SaveDialog1.FileName);
+           TChildForm(ActiveMDIChild).reField.modified:=false;
+           Father.StatusBar1.Panels[1].Text:='';
+           TChildForm(ActiveMDIChild).Caption:= Format('%s - %s', [ExtractFileName(SaveDialog1.FileName), Application.Title]);//onoaiiaeou caaieiaie ai?a?iaai ieia a iacaaiea oaeea
+           AddFileNameToList(SaveDialog1.FileName);
+         end;
+end;
+end;
+en3:end;
+
+procedure TFather.sbNewFileClick(Sender: TObject);
+begin
+creator('Iiaee - ' + IntToStr(MDIChildCount + 1));
+end;
+
+procedure creator(const name:string);
+var Children:TChildForm;
+begin
+children:=TChildForm.create(Application);
+children.color:=clwindow;
+children.caption:=name;
+children.show;
+end;
+
+procedure TFather.sbSearchClick(Sender: TObject);
+begin
+ Search1.ShowModal
+end;
+
+procedure TFather.FindDialog1Close(Sender: TObject);
+begin
+ if not (ActiveMDIChild = Nil) then
+    if ActiveMDIChild is TChildform then   begin
+ TChildForm(ActiveMDIChild).reField.HideSelection:=True;
+  if pos(FindDialog1.FindText,TChildForm(ActiveMDIChild).reField.Text) <> 0 then  Begin
+     TChildForm(ActiveMDIChild).reField.HideSelection:=False;
+     TChildForm(ActiveMDIChild).reField.SelStart:=Pos(FindDialog1.FindText,TChildForm(ActiveMDIChild).reField.Text) -1;
+     TChildForm(ActiveMDIChild).reField.SelLength:=Length(FindDialog1.FindText);
+  end
+  else MessageDlg('Ceiai'+FindDialog1.FindText+'ia iaeaaia!',mtConfirmation,[mbOk],0);
+end;
+end;
+
+
+procedure TFather.SbSearchWRClick(Sender: TObject);
+begin
+  ReplaceDialog1.Execute
+end;
+
+procedure TFather.ReplaceDialog1Close(Sender: TObject);
+Label
+      FinS;
+begin
+ if not (ActiveMDIChild = Nil) then
+    if ActiveMDIChild is TChildform then   begin
+  TChildForm(ActiveMDIChild).reField.HideSelection:=True;
+  FinS: if pos(ReplaceDialog1.FindText,TChildForm(ActiveMDIChild).reField.Text)<>0 then
+        Begin
+             TChildForm(ActiveMDIChild).reField.SelStart:=pos(ReplaceDialog1.FindText,TChildForm(ActiveMDIChild).reField.Text)-1;
+             TChildForm(ActiveMDIChild).reField.SelLength:=Length(ReplaceDialog1.FindText);
+             TChildForm(ActiveMDIChild).reField.SelText:=ReplaceDialog1.ReplaceText;
+             GoTo FinS;
+        end;
+  TChildForm(ActiveMDIChild).reField.HideSelection:=False;
+end;
+end;
+
+procedure TFather.mmSearchWordClick(Sender: TObject);
+begin
+  If MessageDlg('Oy nenoaia iiooeo ooea? iaia neiai ?e neiainiieo?aiiy ? aea?ey? eiai.',mtConfirmation,[mbOk],0)=mrok Then
+   FindDialog1.Execute
+end;
+
+procedure TFather.FindDialog1Close(Sender: TObject);
+begin
+ if not (ActiveMDIChild = Nil) then
+    if ActiveMDIChild is TChildform then   begin
+ TChildForm(ActiveMDIChild).reField.HideSelection:=True;
+  if pos(FindDialog1.FindText,TChildForm(ActiveMDIChild).reField.Text) <> 0 then  Begin
+     TChildForm(ActiveMDIChild).reField.HideSelection:=False;
+     TChildForm(ActiveMDIChild).reField.SelStart:=Pos(FindDialog1.FindText,TChildForm(ActiveMDIChild).reField.Text) -1;
+     TChildForm(ActiveMDIChild).reField.SelLength:=Length(FindDialog1.FindText);
+  end
+  else MessageDlg('Ceiai'+FindDialog1.FindText+'ia iaeaaia!',mtConfirmation,[mbOk],0);
+end;
+end;
+
+procedure TpdStartData.tbOpenClick(Sender: TObject);
+Var
+    i,ii,jj:integer;
+begin
+ Case MessageDLG('Caa?aaoe oaee?',mtWarning,[mbYes,mbNo,mbCancel],0) of
+  idYes:   tbSaveAsClick(Sender);
+  idNo:
+  begin
+   New_File;
+   tbSAve.Enabled:=False;
+  If OpenDialog1.Execute then
+   Begin
+    Pop_OpenFileFromXML(OpenDialog1.FileName, PVO_Grid);
+    Pop_OpenFileFromXML(OpenDialog1.FileName, Hid_Grid);
+    //Pop_OpenFileFromXML(OpenDialog1.FileName, Result_Form.PVRH_Grid);
+    //Pop_OpenFileFromXML(OpenDialog1.FileName, Result_Form.RNM_Grid);
+    //Pop_OpenFileFromXML(OpenDialog1.FileName, Result_Form.NevP_Grid);
+    for i:=1 to Hid_Grid.RowCount-2 do
+      NewHid_Data(IntToStr(i),Hid_Grid.cells[0,i],
+                              Hid_Grid.cells[1,i]);
+    For ii:=pdstartData.DataControl.PageCount-1 downto 0 do
+     For jj:=pdstartData.DataControl.Pages[ii].ComponentCount-1 downto 0 do
+       Begin
+        with pdstartData.DataControl.Pages[ii] do
+         Pop_OpenFileFromXML(OpenDialog1.FileName, (Components[jj] as TStringGrid));
+       end;{for}
+      tbSave.Enabled:=true;
+      Path_File:=OpenDialog1.FileName;
+      FileNameToCaption(Path_File);
+    end;{if}
+   end;{idNo} 
+  idCancel: exit;
+  end;{CAse}
+end;
+
+procedure TpdStartData.tbNewClick(Sender: TObject);
+Label en2;
+begin
+ Case MessageDLG('Caa?aaoe oaee?',mtWarning,[mbYes,mbNo,mbCancel],0) of
+                    idYes:   tbSaveAsClick(Sender);
+                    idNo:   begin
+                             New_File;
+                             tbSAve.Enabled:=False;
+                             FileNameToCaption('Iiaa ia?a?a');
+                            end; 
+                    idCancel:goto en2;
+ end;{Case}
+en2:
+end;
+
+procedure TpdStartData.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+label en3;
+begin
+ Case MessageDlg('Ae oi?aoa caa?aaoe ci?ie?',mtConfirmation,[mbYes,mbNo,mbCancel],0) of
+     idYes:tbSaveAsClick(sender);
+     idNo: goto en3;
+     idCancel: CanClose:=FAlse;
+ end;
+en3: 
+end;
+

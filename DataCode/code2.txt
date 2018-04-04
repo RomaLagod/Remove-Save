@@ -1,0 +1,31 @@
+procedure TChildForm.UpdateCursorPos;
+var
+  CharPos: TPoint;
+begin
+  CharPos.Y := SendMessage(Refield.Handle, EM_EXLINEFROMCHAR, 0,
+    refield.SelStart);
+  CharPos.X := (reField.SelStart -
+    SendMessage(reField.Handle, EM_LINEINDEX, CharPos.Y, 0));
+  Inc(CharPos.Y);
+  Inc(CharPos.X);
+  Father.StatusBar1.Panels[0].Text := Format(sColRowInfo, [CharPos.Y, CharPos.X]);
+end;
+
+
+
+
+
+ FAther.StatusBar1.Panels[0].Text:='?ya: 0 Nei: 0';
+
+
+
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, ComCtrls,Operator_OC, RichEdit1, AppEvnts, ExtCtrls, ClipBrd, ToolWin, ActnList, ImgList;
+RichEdit
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Menus, ActnList, StdActns, ExtCtrls, ToolWin, ComCtrls, StdCtrls, Buttons,
+  Printers,ExtDlgs,FileCtrl, Spin,Operator_OC, RichEdit1, ImgList,IniFiles;
